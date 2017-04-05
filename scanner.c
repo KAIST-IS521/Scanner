@@ -98,7 +98,7 @@ int main( int argc, char* argv[] )
         fprintf( stderr, "Rule file is not given.\n" );
         return EXIT_FAILURE;
     } else {
-        initYara( szRulePath, &rules );
+        if ( initYara( szRulePath, &rules ) == -1 ) exit(1);
     }
 
     if ( optind >= argc ) scanProcs( rules );
