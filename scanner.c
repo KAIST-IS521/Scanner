@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <linux/limits.h>
 #include "yara.h"
 
 void showUsage( const char* prog )
@@ -85,7 +86,7 @@ int main( int argc, char* argv[] )
                 free( szRulePath );
                 exit( EXIT_FAILURE );
             }
-            szRulePath = strdup( optarg );
+            szRulePath = strndup( optarg, PATH_MAX );
             break;
         case 'h': // help
         default:
